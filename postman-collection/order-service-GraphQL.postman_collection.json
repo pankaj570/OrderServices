@@ -1,0 +1,184 @@
+{
+	"info": {
+		"_postman_id": "efff2bec-39fd-4e3d-a06b-e94245f9b075",
+		"name": "order-service-GraphQL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1249322"
+	},
+	"item": [
+		{
+			"name": "mutations",
+			"item": [
+				{
+					"name": "createOrder",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation createOrder ($customerName: String!, $product: String!, $quantity: Int!, $price: Float!) {\n    createOrder (customerName: $customerName, product: $product, quantity: $quantity, price: $price) {\n        id\n        customerId\n        totalAmount\n        status\n        createdAt\n        updatedAt\n    }\n}",
+								"variables": "{\n  \"customerName\": \"Pankaj\",\n  \"product\": \"Laptop\",\n  \"quantity\": 2,\n  \"price\": 100\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateOrder",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation updateOrder ($id: ID!, $customerName: String!, $product: String!, $quantity: Int!, $price: Float!) {\n    updateOrder (id: $id, customerName: $customerName, product: $product, quantity: $quantity, price: $price) {\n        id\n        customerId\n        totalAmount\n        status\n        createdAt\n        updatedAt\n    }\n}",
+								"variables": "{\n  \"id\": \"dcd4bf06-c32a-4cab-8033-726ae35919f4\",\n  \"customerName\": \"Mohan\",\n  \"product\": \"Mobile\",\n  \"quantity\": 2,\n  \"price\": 200\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteOrder",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation deleteOrder ($id: ID!) {\n    deleteOrder (id: $id)\n}",
+								"variables": "{\n  \"id\": \"dcd4bf06-c32a-4cab-8033-726ae35919f4\"\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "queries",
+			"item": [
+				{
+					"name": "getOrderById",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query getOrderById ($id: ID!) {\n    getOrderById (id: $id) {\n        id\n        customerId\n        totalAmount\n        status\n        createdAt\n        updatedAt\n    }\n}",
+								"variables": "{\n  \"id\": \"dcd4bf06-c32a-4cab-8033-726ae35919f4\"\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listOrdersByDate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query listOrdersByDate ($startDate: String!, $endDate: String!) {\n    listOrdersByDate (startDate: $startDate, endDate: $endDate) {\n        id\n        customerId\n        totalAmount\n        status\n        createdAt\n        updatedAt\n    }\n}",
+								"variables": "{\n  \"startDate\": \"2025-09-20\",\n  \"endDate\": \"2025-09-21\"\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:8080/graphql",
+			"type": "any"
+		}
+	]
+}

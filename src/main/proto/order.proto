@@ -1,0 +1,50 @@
+syntax = "proto3";
+package order;
+
+option java_multiple_files = true;
+option java_package = "com.example.orders.grpc.model";
+option java_outer_classname = "OrderProto";
+
+message OrderItem {
+  string productId = 1;
+  int32 quantity = 2;
+  double price = 3;
+}
+
+message Order {
+  string id = 1;
+  string customerId = 2;
+  repeated OrderItem items = 3;
+  double totalAmount = 4;
+  string status = 5;
+  int64 createdAt = 6; // epoch millis
+  int64 updatedAt = 7; // epoch millis
+}
+
+message CreateOrderRequest { Order order = 1; }
+message CreateOrderResponse { Order order = 1; }
+
+message GetOrderByIdRequest { string id = 1; }
+message GetOrderByIdResponse { Order order = 1; }
+
+message ListOrdersByDateRangeRequest {
+  int64 from = 1;
+  int64 to = 2;
+  int32 page = 3;
+  int32 size = 4;
+}
+message ListOrdersByDateRangeResponse { repeated Order orders = 1; }
+
+message UpdateOrderRequest { Order order = 1; }
+message UpdateOrderResponse { Order order = 1; }
+
+message DeleteOrderRequest { string id = 1; }
+message DeleteOrderResponse { bool success = 1; }
+
+service OrderService {
+  rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse);
+  rpc GetOrderById(GetOrderByIdRequest) returns (GetOrderByIdResponse);
+  rpc ListOrdersByDateRange(ListOrdersByDateRangeRequest) returns (ListOrdersByDateRangeResponse);
+  rpc UpdateOrder(UpdateOrderRequest) returns (UpdateOrderResponse);
+  rpc DeleteOrder(DeleteOrderRequest) returns (DeleteOrderResponse);
+}

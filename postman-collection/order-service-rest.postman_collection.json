@@ -1,0 +1,149 @@
+{
+	"info": {
+		"_postman_id": "489a83e0-a661-494a-a6d5-6f8d7788ec64",
+		"name": "order-service-rest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1249322"
+	},
+	"item": [
+		{
+			"name": "CreateOrder",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"customerId\":\"cust-3\",\r\n  \"items\":[{\"productId\":\"p3\",\"quantity\":2,\"price\":100}],\r\n  \"status\":\"NEW\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetOrderById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/orders/9261586b-5b91-40c9-acea-8b5b56e8201b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"orders",
+						"9261586b-5b91-40c9-acea-8b5b56e8201b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListOrdersByDateRange",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/orders?from=0&to=9999999999999&page=0&size=50",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"orders"
+					],
+					"query": [
+						{
+							"key": "from",
+							"value": "0"
+						},
+						{
+							"key": "to",
+							"value": "9999999999999"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "50"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateOrder",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"customerId\":\"cust-3\",\r\n  \"items\":[{\"productId\":\"p3\",\"quantity\":3,\"price\":200}],\r\n  \"status\":\"UPDATED\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/orders/9261586b-5b91-40c9-acea-8b5b56e8201b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"orders",
+						"9261586b-5b91-40c9-acea-8b5b56e8201b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteOrder",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/orders/9261586b-5b91-40c9-acea-8b5b56e8201b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"orders",
+						"9261586b-5b91-40c9-acea-8b5b56e8201b"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
